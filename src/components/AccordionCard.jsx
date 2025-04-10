@@ -3,12 +3,18 @@ import userIcon from '@assets/icons/userimg.svg'
 import calenderIcon from '@assets/icons/calendericon.svg'
 import { useSelector } from 'react-redux';
 
-const AccordionCard = ({ data }) => {
+const AccordionCard = ({ data, onClick, isSelected }) => {
     const { showOutcome, showResponsible, showPeriod } = useSelector((state) => state.accordion);
 
     const { code, title, description, assignee, startDate, endDate, progress, markColor, borderColor, hasBorder, fill } = data || {}
+    
     return (
-        <div className=" h-max bg-[#F0F0F3] gap-2 relative p-2 rounded-[6px]">
+        <div 
+          className={`h-max gap-2 relative p-2 rounded-[6px] cursor-pointer ${
+            isSelected ? 'bg-blue-100 border border-blue-300' : 'bg-[#F0F0F3]'
+          }`}
+          onClick={onClick}
+        >
             <div className='flex flex-col gap-1'>
                 <div className="flex items-center gap-1 text-base">
                     <div className={`size-3 flex-shrink-0 rounded-full `} style={{
@@ -37,7 +43,6 @@ const AccordionCard = ({ data }) => {
                     </div>
                 }
             </div>
-
         </div>
     )
 }

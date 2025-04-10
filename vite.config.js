@@ -11,7 +11,7 @@ export default defineConfig({
     },
   },
   // Add these specific settings for GCS deployment
-  base: "https://storage.googleapis.com/framsys-react-app/", // Critical for correct asset paths
+  base: "/", // Critical for correct asset paths
   build: {
     outDir: "dist",
     sourcemap: true,
